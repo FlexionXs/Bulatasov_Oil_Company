@@ -6,3 +6,9 @@ app.get("/", (req, res)=> {
 });
 
 app.use(express.json());
+
+require("dotenv").config(); // библиотека dotenv загружает переменные среды из файла .env
+
+const port = process.env.port;
+
+app.listen(port, () => console.log(`Сервер запущен! ${port}`));
