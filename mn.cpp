@@ -1,5 +1,4 @@
-// Булатасов Ильяс БПОи-22-04 Вариант 64
-// Метод Ньютона + Половинного деления
+
 #include <iostream>
 #include <cmath>
 #include <iomanip>
