@@ -1,6 +1,8 @@
 const express = require('express');
 const app = express();
 
+const {body, validationResult} = require('express-validator');
+
 app.use(express.json());
 
 app.get("/", (req, res)=> {
