@@ -22,17 +22,17 @@ const getCooperatorById = (req, res) => {
 
 //добавление записи в таблицу Coopertor
 const addCooperator = (req, res) => {
-  const { surname, name, birthday, city, dept_id } = req.body; // извлекаем данные из тела объекта
+  const { last_name, name, birthday, city, dept_id } = req.body; // извлекаем данные из тела объекта
 
   // перед добавлением новой записи проверим есть ли такой сотрудник уже в БД
-  pool.query(queries.checkLastnameCooperator, [surname], (error, results) => {
+  pool.query(queries.checkLastnameCooperator, [last_name], (error, results) => {
     if (results.rows.length) {
-      res.send("Surname already exists");
+      res.send("last_name already exists");
     }
     //если такого сотрудника нет в БД тогда выполняем следующее:
     pool.query(
       queries.addCooperator,
-      [surname, name, birthday, city, dept_id],
+      [last_name, name, birthday, city, dept_id],
       (error, results) => {
         if (error) throw error; //если есть ошибка, то вывести сообщение об ошибке
         res.status(201).send("Cooperator insered");
@@ -45,7 +45,7 @@ const addCooperator = (req, res) => {
 //изменение фамилии сотрудника по значению id
 const updateCooperator = (req, res) => {
   const id = parseInt(req.params.id);
-  const { surname } = req.body;
+  const { last_name } = req.body;
 
   //добавим проверку существует ли заданный по id сотрудник в таблице Cooperator
   pool.query(queries.getCooperatorById, [id], (error, results) => {
@@ -55,7 +55,7 @@ const updateCooperator = (req, res) => {
     }
 
     // если сотрудник с заданным значением id существует, тогда выполняем следующие действия
-    pool.query(queries.updateCooperator, [surname, id], (error, results) => {
+    pool.query(queries.updateCooperator, [last_name, id], (error, results) => {
       if (error) throw error;
       res.status(200).send("Cooperator update successfully");
     });
