@@ -1,4 +1,3 @@
-
 // Запросы
 const getCooperator = "SELECT * FROM cooperator";
 const getCooperatorById = "SELECT * FROM cooperator WHERE cooperator_id = $1";
