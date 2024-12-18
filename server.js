@@ -10,7 +10,11 @@ app.get("/", (req, res)=> {
 const queryRoutes = require("./routes/queryRouter"); 
 app.use("/api/query", queryRoutes);
 
+const procedureRoutes = require("./routes/procedureRouter");
+app.use("/api/procedure", procedureRoutes);
 
+const functionRoutes = require("./routes/functionRouter");
+app.use("/api/function", functionRoutes);
 
 require("dotenv").config(); // библиотека dotenv загружает переменные среды из файла .env
 
